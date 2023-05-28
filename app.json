@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "tinder-cat-react-native",
+    "slug": "cattinder",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wilsonmdrs.cattinder"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.wilsonmdrs.cattinder"
+    },
+    "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "ce13b80d-be5a-4fe5-b2d3-7250457a0ca8"
+      }
+    },
+    "owner": "wilsonmdrs"
+  }
+}

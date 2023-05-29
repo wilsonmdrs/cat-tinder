@@ -12,7 +12,7 @@ You can find the design for the Cat Tinder app on Figma: [Cat Tinder Design](htt
 
 - Cat List: Users can view a list of cats available for matching.
 - Voting: Users can vote on cats they find attractive.
-- Favourites: User can set favourite vats.
+- Favourites: User can set favourite cats.
 
 ## Installation
 

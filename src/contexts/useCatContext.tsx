@@ -22,7 +22,7 @@ export interface FavouriteCat {
   };
 }
 
-interface CatContextType {
+export interface CatContextType {
   catList: Cat[];
   favouriteList: FavouriteCat[];
   isLoading: boolean;

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
-import { MessageIcon, PawnIcon, UserIcon } from '../../../assets';
+import MessageIcon  from '../../assets/svgs/message-circle.svg';
+import PawnIcon  from '../../assets/svgs/pawn.svg';
+import UserIcon  from '../../assets/svgs/user.svg';
+
 import CustomIcon from '../CustomIcon';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 

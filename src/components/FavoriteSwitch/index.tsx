@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Pressable, Animated } from 'react-native';
 import { styles } from './styles';
-import { FireIcon, StarIcon } from '../../../assets';
+import FireIcon from '../../assets/svgs/fire.svg'
+import StarIcon from '../../assets/svgs/star.svg'
 import CustomIcon from '../CustomIcon';
 import { FavouriteCat, useCatContext } from '../../contexts/useCatContext';
 import { useSwiperContext } from '../../contexts/useSwiperContext';

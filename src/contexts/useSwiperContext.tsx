@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react';
 import Swiper from 'react-native-deck-swiper';
 import { Cat } from './useCatContext';
 
-interface SwipeContextType {
+export interface SwipeContextType {
   onSwipeLeft(): void;
   onSwipeRight(): void;
   setCardIndex(index: number): void;

@@ -13,23 +13,13 @@ export const BottomMenuNavigation: React.FC = () => {
       <Tab.Navigator
         tabBar={(props) => <FooterMenu {...props} />}
         screenOptions={() => ({
-            headerShown:false,
-          })}
+          headerShown: false,
+        })}
       >
-        <Tab.Screen
-          name="CatVotes"
-          component={CatVotes}
-        />
-        <Tab.Screen
-          name="Message"
-          component={Message}
-        />
-        <Tab.Screen
-          name="User"
-          component={User}
-        />
+        <Tab.Screen name="CatVotes" component={CatVotes} />
+        <Tab.Screen name="Message" component={Message} />
+        <Tab.Screen name="User" component={User} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 };
-

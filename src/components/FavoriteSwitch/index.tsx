@@ -1,48 +1,59 @@
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  Pressable,
-  Animated,
-} from "react-native";
-import { styles } from "./styles";
-import { FireIcon, StarIcon } from "../../../assets";
-import CustomIcon from "../CustomIcon";
-import { FavouriteCat, useCatContext } from "../../context/useCatContext";
-import { useSwiperContext } from "../../context/useSwiperContext";
+import React, { useEffect, useState } from 'react';
+import { View, Pressable, Animated } from 'react-native';
+import { styles } from './styles';
+import { FireIcon, StarIcon } from '../../../assets';
+import CustomIcon from '../CustomIcon';
+import { FavouriteCat, useCatContext } from '../../contexts/useCatContext';
+import { useSwiperContext } from '../../contexts/useSwiperContext';
 
-const AnimatedIcon = Animated.createAnimatedComponent(CustomIcon)
+const AnimatedIcon = Animated.createAnimatedComponent(CustomIcon);
 
 export const FavoriteSwitch = () => {
   const [isFavourite, setIsFavourite] = useState(false);
-  const { cardIndex } =  useSwiperContext()
-  const { onAddFavourite, onDeleteFavourite, favouriteList, catList } = useCatContext()
+  const { cardIndex } = useSwiperContext();
+  const {
+    onAddFavourite,
+    onDeleteFavourite,
+    isLoading,
+    favouriteList,
+    catList,
+  } = useCatContext();
   const slideAnimation = useState(new Animated.Value(0))[0];
   const colorAnimation = useState(new Animated.Value(0))[0];
 
   const handleToggle = () => {
-    // console.warn(catList.length, cardIndex)
-    if (catList.length) {
-      const catId = catList[cardIndex].id
+    if (catList.length && cardIndex < catList.length) {
+      const catId = catList[cardIndex].id;
       if (!isFavourite) {
-        onAddFavourite(catId)
+        onAddFavourite(catId);
       } else {
-        onDeleteFavourite(catId)
+        onDeleteFavourite(catId);
       }
-      setIsFavourite(!isFavourite)
+      setIsFavourite(!isFavourite);
     }
   };
 
-  useEffect(() => {    
-    if (catList.length) {
-       setIsFavourite(favouriteList.some( (favourite:FavouriteCat) => favourite.image_id === catList[cardIndex].id))
-    }
-  },[])
-  
   useEffect(() => {
-    if (catList.length && favouriteList.length ) {
-      setIsFavourite(favouriteList.some( (favourite:FavouriteCat) => favourite.image_id === catList[cardIndex]?.id))
-   }
-  },[cardIndex])
+    if (catList.length) {
+      setIsFavourite(
+        favouriteList.some(
+          (favourite: FavouriteCat) =>
+            favourite.image_id === catList[cardIndex].id
+        )
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    if (catList.length && favouriteList.length) {
+      setIsFavourite(
+        favouriteList.some(
+          (favourite: FavouriteCat) =>
+            favourite.image_id === catList[cardIndex]?.id
+        )
+      );
+    }
+  }, [cardIndex]);
 
   useEffect(() => {
     Animated.timing(slideAnimation, {
@@ -80,14 +91,18 @@ export const FavoriteSwitch = () => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={handleToggle} style={styles.button}>
+      <Pressable
+        onPress={handleToggle}
+        style={styles.button}
+        disabled={isLoading}
+      >
         <View style={styles.iconContainer}>
-            <View style={styles.icon}>
-              <AnimatedIcon size={20} color={iconFireColor} icon={<FireIcon />} />
-            </View>
-            <View style={styles.icon}>
-              <AnimatedIcon size={20} color={iconStarColor} icon={<StarIcon />} />
-            </View>
+          <View style={styles.icon}>
+            <AnimatedIcon size={20} color={iconFireColor} icon={<FireIcon />} />
+          </View>
+          <View style={styles.icon}>
+            <AnimatedIcon size={20} color={iconStarColor} icon={<StarIcon />} />
+          </View>
         </View>
         <View style={styles.slideContainer}>
           <Animated.View

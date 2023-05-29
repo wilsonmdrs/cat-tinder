@@ -1,5 +1,5 @@
-import React, { Component, ReactElement } from "react";
-import { View, ViewProps } from "react-native";
+import React, { Component, ReactElement } from 'react';
+import { View, ViewProps } from 'react-native';
 
 interface CustomIconProps extends ViewProps {
   size: number;

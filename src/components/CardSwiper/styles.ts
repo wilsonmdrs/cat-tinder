@@ -1,7 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const shadow = {
-  shadowColor: "#00000050",
+  shadowColor: '#00000050',
   shadowOffset: {
     width: 0,
     height: 4,
@@ -13,18 +13,18 @@ const shadow = {
 
 export const styles = StyleSheet.create({
   container: {
-    flex: .6,
-    padding: 2
+    flex: 0.6,
+    padding: 2,
   },
-  swiperContainer:{
+  swiperContainer: {
     position: 'relative',
-    backgroundColor:'#fff'
+    backgroundColor: '#fff',
   },
-  card:{
-    top:0,
-    maxHeight:'60%',
-    backgroundColor:'#fff',
+  card: {
+    top: 0,
+    maxHeight: '60%',
+    backgroundColor: '#fff',
     borderRadius: 10,
-    ...shadow
-  }
-})
+    ...shadow,
+  },
+});

@@ -1,6 +1,6 @@
-import React from "react";
-import { View, Image, Text } from "react-native";
-import { styles } from "./styles";
+import React from 'react';
+import { View, Image, Text } from 'react-native';
+import { styles } from './styles';
 
 interface CardProps {
   imageUrl: string;
@@ -12,7 +12,11 @@ interface CardProps {
 export const Card = ({ imageUrl, name, origin, age }: CardProps) => {
   return (
     <View style={styles.cardContainer}>
-      <Image source={{ uri: imageUrl }} style={styles.cardImage} testID="card-image"/>
+      <Image
+        source={{ uri: imageUrl }}
+        style={styles.cardImage}
+        testID="card-image"
+      />
       <View style={styles.details}>
         <View>
           <Text style={styles.textName}>{name}</Text>

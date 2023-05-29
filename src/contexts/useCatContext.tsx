@@ -1,7 +1,6 @@
-import axios from "axios";
-import React, { useCallback } from "react";
-import { createContext, useContext, useEffect, useState } from "react";
-import { catApi } from "../api/catApi";
+import React, { useCallback } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { catApi } from '../api/catApi';
 
 export interface Cat {
   id: string;
@@ -19,7 +18,7 @@ export interface FavouriteCat {
   created_at: string;
   image: {
     id: string;
-    url:string;
+    url: string;
   };
 }
 
@@ -38,7 +37,7 @@ const CatContext = createContext<CatContextType | null>(null);
 export const useCatContext = (): CatContextType => {
   const context = useContext(CatContext);
   if (!context) {
-    throw new Error("useCatContext must be used within a CatProvider");
+    throw new Error('useCatContext must be used within a CatProvider');
   }
   return context;
 };
@@ -49,11 +48,10 @@ export const CatProvider: React.FC<{ children: React.ReactNode }> = React.memo(
     const [isLoading, setIsLoading] = useState(false);
     const [favouriteList, setFavouriteList] = useState<FavouriteCat[]>([]);
 
-
     const getCatList = useCallback(async () => {
       try {
         setIsLoading(true);
-        const response = await catApi.getCatList()
+        const response = await catApi.getCatList();
         const cats = await Promise.all(
           response.map(async (cat: { id: string }) => {
             const catData = await catApi.getCatData(cat.id);
@@ -63,36 +61,36 @@ export const CatProvider: React.FC<{ children: React.ReactNode }> = React.memo(
         setCatList(cats);
         setIsLoading(false);
       } catch (error) {
-        console.warn("GetCatList", error);
+        console.warn('GetCatList', error);
         setIsLoading(false);
       }
     }, []);
 
     const getFavouriteList = useCallback(async () => {
-        const response = await catApi.getFavouriteList()
-        setFavouriteList(response);
+      const response = await catApi.getFavouriteList();
+      setFavouriteList(response);
     }, [setFavouriteList]);
 
     const onVoteUp = async (id: string) => {
-        await catApi.voteUp(id)
+      await catApi.voteUp(id);
     };
 
     const onAddFavourite = async (id: string) => {
-        await catApi.addFavourite(id)
-        getFavouriteList();
+      await catApi.addFavourite(id);
+      getFavouriteList();
     };
 
     const onDeleteFavourite = async (id: string) => {
-        const favouriteId = favouriteList.find(fav => fav.image_id === id)?.id
-        if (favouriteId) {
-          const response = await catApi.deleteFavourite(favouriteId)
-          getFavouriteList()
-        }
+      const favouriteId = favouriteList.find((fav) => fav.image_id === id)?.id;
+      if (favouriteId) {
+        const response = await catApi.deleteFavourite(favouriteId);
+        getFavouriteList();
+      }
     };
 
     const reloadCatList = async () => {
-      await getCatList()
-    }
+      await getCatList();
+    };
 
     useEffect(() => {
       getCatList();
@@ -108,7 +106,7 @@ export const CatProvider: React.FC<{ children: React.ReactNode }> = React.memo(
           onVoteUp,
           onAddFavourite,
           onDeleteFavourite,
-          reloadCatList
+          reloadCatList,
         }}
       >
         {children}

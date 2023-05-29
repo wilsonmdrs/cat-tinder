@@ -1,18 +1,18 @@
-import axios, { AxiosResponse } from "axios";
-import { Cat } from "../context/useCatContext";
+import axios, { AxiosResponse } from 'axios';
+import { Cat } from '../contexts/useCatContext';
 
-const baseURL = "https://api.thecatapi.com/v1";
+const baseURL = 'https://api.thecatapi.com/v1';
 const API_KEY =
-  "live_aFFDrwub8qdRTMMPCdZC8CVdRlP54kwMfZKSKdLRbTvZytyHiRXzZMtDwpxAXUBe";
+  'live_aFFDrwub8qdRTMMPCdZC8CVdRlP54kwMfZKSKdLRbTvZytyHiRXzZMtDwpxAXUBe';
 const header = {
-  "content-type": "application/json",
-  "x-api-key": API_KEY,
+  'content-type': 'application/json',
+  'x-api-key': API_KEY,
 };
-const subId = "cat-tinder-application";
+const subId = 'cat-tinder-application';
 
 export async function getCatData(id: string): Promise<Cat> {
   const response = await axios.get(`${baseURL}/images/${id}`);
-  const { breeds = [{ name: "...", origin: "Unknown", life_span: "" }] } =
+  const { breeds = [{ name: '...', origin: 'Unknown', life_span: '' }] } =
     response.data;
   const cat = {
     id: response.data.id,
@@ -31,7 +31,7 @@ export async function getCatList() {
     );
     return response.data;
   } catch (error) {
-    console.log("GetCatList", error);
+    console.log('GetCatList', error);
   }
 }
 
@@ -43,8 +43,7 @@ export async function getFavouriteList() {
     );
     return response.data;
   } catch (error) {
-    console.log("getFavouriteList", error);
-    
+    console.log('getFavouriteList', error);
   }
 }
 
@@ -61,7 +60,7 @@ export async function voteUp(id: string) {
     );
     return response.data;
   } catch (error) {
-    console.log("VoteUp", error);
+    console.log('VoteUp', error);
   }
 }
 
@@ -74,7 +73,7 @@ export async function addFavourite(id: string) {
     );
     return response.data;
   } catch (error) {
-    console.log("addFavourite", error);
+    console.log('addFavourite', error);
   }
 }
 
@@ -82,12 +81,12 @@ export async function deleteFavourite(id: number) {
   try {
     const response = await axios.delete(`${baseURL}/favourites/${id}`, {
       headers: {
-        "x-api-key": API_KEY,
+        'x-api-key': API_KEY,
       },
     });
     return response.data;
   } catch (error) {
-    console.log("deleteFavourite", error);
+    console.log('deleteFavourite', error);
   }
 }
 

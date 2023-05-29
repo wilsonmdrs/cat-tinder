@@ -1,13 +1,12 @@
-import axios from "axios";
-import React, { useCallback, useRef } from "react";
-import { createContext, useContext, useEffect, useState } from "react";
-import Swiper from "react-native-deck-swiper";
-import { Cat } from "./useCatContext";
+import React, { useRef } from 'react';
+import { createContext, useContext, useState } from 'react';
+import Swiper from 'react-native-deck-swiper';
+import { Cat } from './useCatContext';
 
 interface SwipeContextType {
   onSwipeLeft(): void;
   onSwipeRight(): void;
-  setCardIndex(index:number): void;
+  setCardIndex(index: number): void;
   ref: React.LegacyRef<Swiper<Cat>>;
   cardIndex: number;
 }
@@ -17,7 +16,7 @@ const SwiperContext = createContext<SwipeContextType | null>(null);
 export const useSwiperContext = (): SwipeContextType => {
   const context = useContext(SwiperContext);
   if (!context) {
-    throw new Error("useSwiperContext must be used within a CatProvider");
+    throw new Error('useSwiperContext must be used within a CatProvider');
   }
   return context;
 };
@@ -32,15 +31,15 @@ export const SwiperProvider: React.FC<SwiperProviderProps> = React.memo(
     const [cardIndex, setCardIndex] = useState(0);
 
     const onSwipeLeft = () => {
-      if ("current" in ref) {
+      if ('current' in ref) {
         ref.current?.swipeLeft();
-        setCardIndex(cardIndex + 1)
+        setCardIndex(cardIndex + 1);
       }
     };
     const onSwipeRight = () => {
-      if ("current" in ref) {
+      if ('current' in ref) {
         ref.current?.swipeRight();
-        setCardIndex(cardIndex + 1)
+        setCardIndex(cardIndex + 1);
       }
     };
 

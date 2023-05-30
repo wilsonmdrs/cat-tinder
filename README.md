@@ -2,7 +2,7 @@
 
 Cat Tinder is a dating app for cats where they can find their purrfect match. This app allows users to browse through a list of adorable cats and vote on their favorites.
 
-![image](https://github.com/wilsonmdrs/cat-tinder/blob/main/assets/cattinder.png)
+![image](https://github.com/wilsonmdrs/cat-tinder/blob/main/src/assets/imgs/cattinder.png)
 
 ## Design
 
